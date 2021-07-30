@@ -1,11 +1,10 @@
-import Pagination from 'components/common/Pagination';
 import React, { useEffect, useState } from 'react';
+import { baseUrl } from 'services';
 import { Character, CharacterFilters } from 'types';
+import Pagination from 'components/common/Pagination';
 import CharacterCard from './Character/CharacterCard';
 import CharacterDetails from './Character/CharacterDetails';
 import Filters from './Filters';
-
-const baseUrl = 'https://rickandmortyapi.com/api';
 
 const Characters = ({ title = 'Characters' }) => {
   const [page, setPage] = useState(1);
