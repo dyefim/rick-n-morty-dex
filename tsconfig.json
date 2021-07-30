@@ -1,0 +1,24 @@
+{
+  "include": ["src", "jsconfig.json"],
+  "compilerOptions": {
+    "module": "es6",
+    "target": "es5",
+    "moduleResolution": "node",
+    "incremental": true,
+    "strict": true,
+    "noEmitOnError": true,
+    "checkJs": true,
+    "allowJs": true, // allow import of JS modules
+    "jsx": "react",
+    "forceConsistentCasingInFileNames": true, // prevents cross-OS problems
+    "skipLibCheck": true, // only check types we refer to from our code
+    "skipDefaultLibCheck": true,
+    "resolveJsonModule": true, // enable import of JSON files
+    "strictNullChecks": true,
+    "noImplicitAny": true,
+    "allowSyntheticDefaultImports": true, // Allow default imports from modules with no default export,
+    "strictFunctionTypes": true,
+    "alwaysStrict": true
+    // "noImplicitReturns": true
+  }
+}
