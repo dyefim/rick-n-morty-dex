@@ -1,4 +1,5 @@
 import React from 'react';
+import { baseUrl } from 'services';
 import { Character } from 'types';
 
 interface Props {
@@ -16,12 +17,13 @@ const cardStyles: React.CSSProperties = {
 
 const CharacterCard = ({ character }: Props) => {
   const episodes = character.episode.map(episodeUrl =>
-    episodeUrl.replace('https://rickandmortyapi.com/api/episode/', '')
+    episodeUrl.replace(`${baseUrl}/episode/`, '')
   );
 
   return (
     <div style={cardStyles}>
       <span>Name: {character.name}</span>
+
       <img src={character.image} alt={character.name + ' image'} width="100" />
 
       <span>Status: {character.status}</span>

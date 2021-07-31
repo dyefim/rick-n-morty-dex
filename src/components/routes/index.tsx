@@ -7,22 +7,20 @@ import WatchList from '../pages/WatchList';
 
 const Routes = () => {
   return (
-    <>
-      <Switch>
-        <Route path="/characters">
-          <Characters />
-        </Route>
-        <Route path="/episodes">
-          <Episodes />  
-        </Route>
-        <Route path="/locations">
-          <Locations />
-        </Route>
-        <Route path="/watch-list">
-          <WatchList />
-        </Route>
-      </Switch>
-    </>
+    <Switch>
+      <Route path="/characters">
+        <Characters />
+      </Route>
+      <Route path="/episodes">
+        <Episodes />
+      </Route>
+      <Route path="/locations">
+        <Locations />
+      </Route>
+      <Route path="/watch-list">
+        <WatchList />
+      </Route>
+    </Switch>
   );
 };
 

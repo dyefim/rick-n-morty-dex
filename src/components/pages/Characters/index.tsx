@@ -6,9 +6,8 @@ import CharacterDetails from './Character/CharacterDetails';
 import Filters from './Filters';
 import useRequestByParams from 'hooks/useRequestByParams';
 
-const Characters = ({ title = 'Characters' }) => {
+const CharactersPage = ({ title = 'Characters' }) => {
   const [page, setPage] = useState(1);
-
   const [filters, setFilters] = useState<CharacterFilters>({
     species: '',
     status: '',
@@ -49,4 +48,4 @@ const Characters = ({ title = 'Characters' }) => {
   );
 };
 
-export default Characters;
+export default CharactersPage;

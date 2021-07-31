@@ -39,6 +39,7 @@ const Filters = ({ setFilters }: Props) => {
       </select>
     </label>
   );
+
   const speciesInput = (
     <label htmlFor="species">
       Species

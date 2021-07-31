@@ -4,9 +4,8 @@ import Filters from './Filters';
 import EpisodesTable from './EpisodesTable';
 import useRequestByParams from 'hooks/useRequestByParams';
 
-const Episodes = ({ title = 'Episodes' }) => {
+const EpisodesPage = ({ title = 'Episodes' }) => {
   const [page, setPage] = useState(1);
-
   const [filters, setFilters] = useState({
     name: '',
     // episode: 'S01',
@@ -28,4 +27,4 @@ const Episodes = ({ title = 'Episodes' }) => {
   );
 };
 
-export default Episodes;
+export default EpisodesPage;
