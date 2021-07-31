@@ -1,18 +1,13 @@
 import React from 'react';
+import { handleFilterChange } from 'events/';
+import { EpisodeFilters } from 'types';
 
 interface Props {
-  setFilters: React.Dispatch<React.SetStateAction<{ name: string }>>;
+  setFilters: React.Dispatch<React.SetStateAction<EpisodeFilters>>;
 }
 
 const Filters = ({ setFilters }: Props) => {
-  const changeFilter = (
-    event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
-  ) => {
-    setFilters(filters => ({
-      ...filters,
-      [event.target.name]: event.target.value,
-    }));
-  };
+  const changeFilter = handleFilterChange(setFilters);
 
   const episodeNameInput = (
     <label htmlFor="name">

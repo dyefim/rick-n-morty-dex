@@ -1,4 +1,5 @@
 import React from 'react';
+import { handleFilterChange } from 'events/';
 import { CharacterFilters } from 'types';
 
 interface Props {
@@ -13,14 +14,7 @@ const renderSelectOptions = (oprionsArr: string[]) =>
   ));
 
 const Filters = ({ setFilters }: Props) => {
-  const changeFilter = (
-    event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
-  ) => {
-    setFilters(filters => ({
-      ...filters,
-      [event.target.name]: event.target.value,
-    }));
-  };
+  const changeFilter = handleFilterChange(setFilters);
 
   const statusSelect = (
     <label htmlFor="status">

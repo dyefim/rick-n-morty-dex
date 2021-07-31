@@ -1,4 +1,5 @@
 import React from 'react';
+import { handleFilterChange } from 'events/';
 import { LocationFilters } from 'types';
 
 interface Props {
@@ -6,14 +7,7 @@ interface Props {
 }
 
 const Filters = ({ setFilters }: Props) => {
-  const changeFilter = (
-    event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
-  ) => {
-    setFilters(filters => ({
-      ...filters,
-      [event.target.name]: event.target.value,
-    }));
-  };
+  const changeFilter = handleFilterChange(setFilters);
 
   const locationNameInput = (
     <label htmlFor="name">

@@ -31,6 +31,8 @@ export interface Episode {
   created: string;
 }
 
+export type EpisodeFilters = Pick<Episode, 'name'>;
+
 export interface Location {
   id: number;
   name: string;
