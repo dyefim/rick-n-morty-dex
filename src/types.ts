@@ -19,11 +19,7 @@ export interface Character {
   created: string;
 }
 
-export interface CharacterFilters {
-  species: string;
-  status: string;
-  gender: string;
-}
+export type CharacterFilters = Pick<Character, 'species' | 'status' | 'gender'>;
 
 export interface Episode {
   id: number;
@@ -45,11 +41,7 @@ export interface Location {
   created: string;
 }
 
-export interface LocationFilters {
-  name: string;
-  type: string;
-  dimension: string;
-}
+export type LocationFilters = Pick<Location, 'name' | 'type' | 'dimension'>;
 
 export interface WatchListItem {
   [id: string]: {
