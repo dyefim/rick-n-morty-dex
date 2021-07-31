@@ -1,5 +1,5 @@
 import React from 'react';
-import { WatchListItem } from '..';
+import { WatchListItem } from 'types';
 import ListItem from './ListItem';
 
 interface Props {

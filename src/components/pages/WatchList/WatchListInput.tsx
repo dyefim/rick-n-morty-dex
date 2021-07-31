@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { WatchListItem } from '.';
+import { WatchListItem } from 'types';
 
 interface Props {
   setWatchlist: React.Dispatch<React.SetStateAction<WatchListItem>>;

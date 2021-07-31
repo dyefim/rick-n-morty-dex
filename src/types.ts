@@ -50,3 +50,10 @@ export interface LocationFilters {
   type: string;
   dimension: string;
 }
+
+export interface WatchListItem {
+  [id: string]: {
+    episode: string;
+    isComplete: boolean;
+  };
+}

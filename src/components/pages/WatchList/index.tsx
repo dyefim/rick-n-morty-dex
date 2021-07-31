@@ -1,29 +1,14 @@
-import React, { useEffect, useState } from 'react';
-import { getLocalState, saveToLocalState } from 'utils/localStorage';
+import React from 'react';
+import useLocalState from 'hooks/useLocalState';
 import WatchListInput from './WatchListInput';
 import WatchListItems from './WatchListItems';
-
-export interface WatchListItem {
-  [id: string]: {
-    episode: string;
-    isComplete: boolean;
-  };
-}
+import { WatchListItem } from 'types';
 
 const WatchList = ({ title = 'My watch list' }) => {
-  const [watchlist, setWatchlist] = useState<WatchListItem>({});
-
-  useEffect(() => {
-    const watchlistFromLocalState = getLocalState('watchlist');
-
-    if (watchlistFromLocalState) {
-      setWatchlist(watchlist => ({ ...watchlist, ...watchlistFromLocalState }));
-    }
-  }, []);
-
-  useEffect(() => {
-    saveToLocalState('watchlist', watchlist);
-  }, [watchlist]);
+  const [watchlist, setWatchlist] = useLocalState<WatchListItem>(
+    'watchlist',
+    {}
+  );
 
   return (
     <div>
