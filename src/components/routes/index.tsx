@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch, Route } from 'react-router';
+import { Switch, Route, Redirect } from 'react-router';
 import Characters from '../pages/Characters';
 import Episodes from '../pages/Episodes';
 import Locations from '../pages/Locations';
@@ -19,6 +19,9 @@ const Routes = () => {
       </Route>
       <Route path="/watch-list">
         <WatchList />
+      </Route>
+      <Route path="/">
+        <Redirect to="/characters" />
       </Route>
     </Switch>
   );

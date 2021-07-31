@@ -1,16 +1,21 @@
 import React from 'react';
+import Container from '@material-ui/core/Container';
+import Typography from '@material-ui/core/Typography';
 import Navigation from './Navigation';
 import Routes from './routes';
+import useStyles from 'styles/mainStyles';
 
-const title = `Rick'n'Morty-dex`;
+const Main = ({ mainTitle = `Rick'n'Morty-dex` }) => {
+  const classes = useStyles();
 
-const Main = () => {
   return (
-    <div>
-      <h1>{title}</h1>
-      <Navigation />
+    <Container maxWidth="sm">
+      <Typography className={classes.mainTitle} align="center" variant="h1">
+        {mainTitle}
+      </Typography>
       <Routes />
-    </div>
+      <Navigation />
+    </Container>
   );
 };
 
