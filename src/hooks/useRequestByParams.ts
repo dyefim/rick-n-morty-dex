@@ -1,38 +1,33 @@
 import { useEffect, useState } from 'react';
-import { baseUrl } from 'services';
+import API from 'services/api';
 
-interface Props {
+interface Params {
   endpoint: string;
   filters: Record<string, string>;
   page: number;
 }
 
-const useRequestByParams = ({ endpoint, filters, page }: Props) => {
+const useRequestByParams = <R>({ endpoint, filters, page }: Params) => {
   const [info, setInfo] = useState({
     count: 1,
     pages: 1,
     next: '',
     prev: '',
   });
-  const [data, setData] = useState([]);
+
+  const [data, setData] = useState<R[]>([]);
 
   useEffect(() => {
-    const getData = async () => {
-      const parameters = Object.entries(filters).map(
-        ([key, value]) => key + '=' + encodeURIComponent(value)
-      );
+    const requestAndSetData = async () => {
+      const result = await API.getData<R>({ endpoint, filters, page });
 
-      const response = await fetch(
-        `${baseUrl}/${endpoint}/?page=${page}&${parameters.join('&')}`
-      );
+      if (result?.error) return;
 
-      const result = await response.json();
-
-      if (result.info) setInfo(result.info);
-      if (result.results) setData(result.results);
+      if (result?.info) setInfo(result.info);
+      if (result?.results) setData(result.results);
     };
 
-    getData();
+    requestAndSetData();
   }, [endpoint, filters, page]);
 
   return { data, info };

@@ -14,7 +14,7 @@ const CharactersPage = ({ title = 'Characters' }) => {
     gender: '',
   });
 
-  const { data: characters, info } = useRequestByParams({
+  const { data: characters, info } = useRequestByParams<Character>({
     endpoint: 'character',
     filters,
     page,

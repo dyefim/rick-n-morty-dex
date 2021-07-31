@@ -3,6 +3,7 @@ import Pagination from 'components/common/Pagination';
 import Filters from './Filters';
 import EpisodesTable from './EpisodesTable';
 import useRequestByParams from 'hooks/useRequestByParams';
+import { Episode } from 'types';
 
 const EpisodesPage = ({ title = 'Episodes' }) => {
   const [page, setPage] = useState(1);
@@ -11,7 +12,7 @@ const EpisodesPage = ({ title = 'Episodes' }) => {
     // episode: 'S01',
   });
 
-  const { data: episodes, info } = useRequestByParams({
+  const { data: episodes, info } = useRequestByParams<Episode>({
     endpoint: 'episode',
     filters,
     page,
