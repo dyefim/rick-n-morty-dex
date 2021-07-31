@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Character, CharacterFilters } from 'types';
-import Pagination from 'components/common/Pagination';
+import Pagination from '@material-ui/lab/Pagination';
+import { handlePagination } from 'events/';
 import CharacterCard from './Character/CharacterCard';
 import CharacterDetails from './Character/CharacterDetails';
 import Filters from './Filters';
@@ -8,6 +9,7 @@ import useRequestByParams from 'hooks/useRequestByParams';
 
 const CharactersPage = ({ title = 'Characters' }) => {
   const [page, setPage] = useState(1);
+
   const [filters, setFilters] = useState<CharacterFilters>({
     species: '',
     status: '',
@@ -42,7 +44,12 @@ const CharactersPage = ({ title = 'Characters' }) => {
     <div>
       <h1>{title}</h1>
       <Filters setFilters={setFilters} />
-      <Pagination numberOfPages={info.pages} pageSetter={setPage} />
+      <Pagination
+        color="secondary"
+        count={info.pages}
+        page={page}
+        onChange={handlePagination(setPage)}
+      />
       {charactersCards}
     </div>
   );

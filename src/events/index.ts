@@ -1,5 +1,7 @@
 type FilterSetter<F> = React.Dispatch<React.SetStateAction<F>>;
 
+type PageSetter = React.Dispatch<React.SetStateAction<number>>;
+
 type SelectOrInputChangeEvent = React.ChangeEvent<
   HTMLInputElement | HTMLSelectElement
 >;
@@ -19,4 +21,10 @@ const handleFilterChange =
     }));
   };
 
-export { handleInput, handleFilterChange };
+const handlePagination =
+  (pageSetter: PageSetter) =>
+  (_: React.ChangeEvent<unknown>, value: number) => {
+    pageSetter(value);
+  };
+
+export { handleInput, handleFilterChange, handlePagination };
