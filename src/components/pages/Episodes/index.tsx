@@ -5,7 +5,7 @@ import EpisodesTable from './EpisodesTable';
 import useRequestByParams from 'hooks/useRequestByParams';
 import { Episode } from 'types';
 
-const EpisodesPage = ({ title = 'Episodes' }) => {
+const EpisodesPage = () => {
   const [page, setPage] = useState(1);
 
   const [filters, setFilters] = useState({
@@ -21,7 +21,6 @@ const EpisodesPage = ({ title = 'Episodes' }) => {
 
   return (
     <div>
-      <h1>{title}</h1>
       <Filters setFilters={setFilters} />
       <Pagination numberOfPages={info.pages} page={page} pageSetter={setPage} />
       <EpisodesTable episodes={episodes} />

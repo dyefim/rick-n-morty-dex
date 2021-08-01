@@ -5,7 +5,7 @@ import LocationsTable from './LocationsTable';
 import useRequestByParams from 'hooks/useRequestByParams';
 import { Location } from 'types';
 
-const LocationsPage = ({ title = 'Locations' }) => {
+const LocationsPage = () => {
   const [page, setPage] = useState(1);
 
   const [filters, setFilters] = useState({
@@ -22,7 +22,6 @@ const LocationsPage = ({ title = 'Locations' }) => {
 
   return (
     <div>
-      <h1>{title}</h1>
       <Filters setFilters={setFilters} />
       <Pagination numberOfPages={info.pages} page={page} pageSetter={setPage} />
       <LocationsTable locations={locations} />
