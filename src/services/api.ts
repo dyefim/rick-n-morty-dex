@@ -1,5 +1,6 @@
-import { baseUrl } from 'services';
 import { ApiResponse } from 'types';
+
+export const baseUrl = 'https://rickandmortyapi.com/api';
 
 interface Params {
   endpoint: string;

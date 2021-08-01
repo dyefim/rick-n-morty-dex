@@ -8,8 +8,8 @@ import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles(theme => ({
   form: {
     display: 'flex',
-    // flexDirection: 'column',
-    gap: theme.spacing(2),
+    gap: theme.spacing(1),
+    margin: `${theme.spacing(1)}px 0`
   },
   legend: {
     color: '#777',
@@ -64,7 +64,6 @@ const Filters = ({ setFilters }: Props) => {
 
   return (
     <form className={classes.form}>
-      {/* <legend className={classes.legend}>Filters</legend> */}
       {statusSelect}
       {genderSelect}
       {speciesInput}

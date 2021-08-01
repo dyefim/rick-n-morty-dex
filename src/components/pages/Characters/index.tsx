@@ -1,11 +1,20 @@
 import React, { useState } from 'react';
-import { Character, CharacterFilters } from 'types';
-import Pagination from '@material-ui/lab/Pagination';
-import { handlePagination } from 'events/';
-import CharacterCard from './Character/CharacterCard';
-import CharacterDetails from './Character/CharacterDetails';
-import Filters from './Filters';
 import useRequestByParams from 'hooks/useRequestByParams';
+import Filters from './Filters';
+import CharactersList from './CharactersList';
+import { handlePagination } from 'events/';
+import { Character, CharacterFilters } from 'types';
+import Typography from '@material-ui/core/Typography';
+import Pagination from '@material-ui/lab/Pagination';
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles(theme => ({
+  pagination: {
+    display: 'flex',
+    justifyContent: 'center',
+    padding: theme.spacing(2),
+  },
+}));
 
 const CharactersPage = ({ title = 'Characters' }) => {
   const [page, setPage] = useState(1);
@@ -22,35 +31,22 @@ const CharactersPage = ({ title = 'Characters' }) => {
     page,
   });
 
-  const [selectedCard, setSelectedCard] = useState(0);
-
-  const charactersCards = characters?.map((character: Character) => {
-    return (
-      <div key={character.id}>
-        <div onClick={() => setSelectedCard(character.id)}>
-          <CharacterCard character={character} />
-        </div>
-
-        {selectedCard === character.id && (
-          <div onClick={() => setSelectedCard(0)}>
-            <CharacterDetails character={character} />
-          </div>
-        )}
-      </div>
-    );
-  });
+  const classes = useStyles();
 
   return (
     <div>
-      <h1>{title}</h1>
+      <Typography align="right" variant="h3">
+        {title}
+      </Typography>
       <Filters setFilters={setFilters} />
       <Pagination
         color="secondary"
         count={info.pages}
         page={page}
         onChange={handlePagination(setPage)}
+        className={classes.pagination}
       />
-      {charactersCards}
+      <CharactersList characters={characters} />
     </div>
   );
 };

@@ -1,5 +1,5 @@
 import API from './api';
+import { baseUrl } from './api';
 
-export const baseUrl = 'https://rickandmortyapi.com/api';
-
+export { baseUrl };
 export default API;
