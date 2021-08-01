@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import { useHistory, useLocation } from 'react-router-dom';
+import React from 'react';
 import BottomNavigation from '@material-ui/core/BottomNavigation';
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
 import FaceIcon from '@material-ui/icons/Face';
@@ -7,21 +6,10 @@ import MovieIcon from '@material-ui/icons/Movie';
 import ExploreIcon from '@material-ui/icons/Explore';
 import PlaylistPlayIcon from '@material-ui/icons/PlaylistPlay';
 import useStyles from 'styles/bottomNavStyles';
+import useNavigation from 'hooks/useNavigation';
 
 const Navigation = () => {
-  const history = useHistory();
-  const location = useLocation();
-
-  const changeLocation = (path = '/') => {
-    history.push(path);
-  };
-
-  const [value, setValue] = useState(() => location.pathname || '/characters');
-
-  const handleChange = (_: unknown, newValue: string) => {
-    setValue(newValue);
-    changeLocation(newValue);
-  };
+  const [value, handleChange] = useNavigation('/characters');
 
   const classes = useStyles();
 
