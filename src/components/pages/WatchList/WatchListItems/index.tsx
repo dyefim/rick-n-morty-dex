@@ -1,6 +1,20 @@
 import React from 'react';
 import { WatchListItem } from 'types';
 import ListItem from './ListItem';
+import Grid from '@material-ui/core/Grid';
+import Box from '@material-ui/core/Box';
+import { createStyles, makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles((theme) =>
+  createStyles({
+    root: {
+      width: '100%',
+      maxWidth: 360,
+      margin: '0 auto',
+      backgroundColor: theme.palette.background.paper,
+    },
+  })
+);
 
 interface Props {
   watchlist: WatchListItem;
@@ -8,6 +22,8 @@ interface Props {
 }
 
 const WatchListItems = ({ watchlist, setWatchlist }: Props) => {
+  const classes = useStyles();
+
   const handleCheckbox = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { id } = event.target;
 
@@ -31,20 +47,22 @@ const WatchListItems = ({ watchlist, setWatchlist }: Props) => {
   };
 
   return (
-    <ul>
-      {Object.entries(watchlist).map(([id, { episode, isComplete }]) => {
-        return (
-          <ListItem
-            key={id}
-            id={id}
-            episodeName={episode}
-            isComplete={isComplete}
-            handleCheckbox={handleCheckbox}
-            handleRemove={handleRemove}
-          />
-        );
-      })}
-    </ul>
+    <Box borderRadius={4} className={classes.root}>
+      <ul>
+        {Object.entries(watchlist).map(([id, { episode, isComplete }]) => {
+          return (
+            <ListItem
+              key={id}
+              id={id}
+              episodeName={episode}
+              isComplete={isComplete}
+              handleCheckbox={handleCheckbox}
+              handleRemove={handleRemove}
+            />
+          );
+        })}
+      </ul>
+    </Box>
   );
 };
 

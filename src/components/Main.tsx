@@ -8,10 +8,10 @@ import useStyles from 'styles/mainStyles';
 
 const theme = createTheme({
   palette: {
-    text: {
-      primary: '#fff',
-      secondary: '#aaa',
-    },
+    // text: {
+    //   primary: '#aaa',
+    //   secondary: '#777',
+    // },
     primary: {
       main: '#03a9f4',
     },

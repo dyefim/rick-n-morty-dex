@@ -7,7 +7,8 @@ const useStyles = makeStyles(theme => ({
     fontWeight: 'normal',
     letterSpacing: -1,
     fontStyle: 'italic',
-    color: '#88d446',
+    // color: '#88d446',
+    color: '#36d',
   },
 }));
 

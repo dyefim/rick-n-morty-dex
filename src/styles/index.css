@@ -10,6 +10,11 @@ body {
 }
 
 html {
-  background-color: #252555;
-  color: #ddd;
+  /* background-color: #252555; */
+  background-color: #eef;
+  /* color: #ddd; */
+}
+
+ul {
+  list-style-type: none !important;
 }

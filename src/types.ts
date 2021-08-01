@@ -64,3 +64,7 @@ export interface ApiResponse<R> {
   results?: R[];
   error?: string;
 }
+
+export type SelectEvent = React.ChangeEvent<
+  HTMLSelectElement | HTMLTextAreaElement | HTMLInputElement
+>;

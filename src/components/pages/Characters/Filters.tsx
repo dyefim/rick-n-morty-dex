@@ -1,49 +1,70 @@
 import React from 'react';
 import { handleFilterChange } from 'events/';
+import Select from 'components/common/Select';
+import TextField from '@material-ui/core/TextField';
 import { CharacterFilters } from 'types';
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles(theme => ({
+  form: {
+    display: 'flex',
+    // flexDirection: 'column',
+    gap: theme.spacing(2),
+  },
+  legend: {
+    color: '#777',
+  },
+  select: {
+    width: '100%',
+  },
+  input: {
+    width: '100%',
+  },
+}));
 
 interface Props {
   setFilters: React.Dispatch<React.SetStateAction<CharacterFilters>>;
 }
 
-const renderSelectOptions = (oprionsArr: string[]) =>
-  oprionsArr.map(option => (
-    <option key={option} value={option}>
-      {option}
-    </option>
-  ));
-
 const Filters = ({ setFilters }: Props) => {
+  const classes = useStyles();
+
   const changeFilter = handleFilterChange(setFilters);
 
   const statusSelect = (
-    <label htmlFor="status">
-      Status
-      <select onChange={changeFilter} name="status" id="status">
-        {renderSelectOptions(['', 'Alive', 'Dead', 'unknown'])}
-      </select>
-    </label>
+    <Select
+      options={['', 'Alive', 'Dead', 'unknown']}
+      handleSelection={changeFilter}
+      label={'Status'}
+      name={'status'}
+      className={classes.select}
+    />
   );
 
   const genderSelect = (
-    <label htmlFor="gender">
-      Gender
-      <select onChange={changeFilter} name="gender" id="gender">
-        {renderSelectOptions(['', 'Female', 'Male', 'Genderless', 'unknown'])}
-      </select>
-    </label>
+    <Select
+      options={['', 'Female', 'Male', 'Genderless', 'unknown']}
+      handleSelection={changeFilter}
+      label={'Gender'}
+      name={'gender'}
+      className={classes.select}
+    />
   );
 
   const speciesInput = (
-    <label htmlFor="species">
-      Species
-      <input type="text" name="species" id="species" onChange={changeFilter} />
-    </label>
+    <TextField
+      id={'Species'}
+      label={'Species'}
+      name={'species'}
+      onChange={changeFilter as React.ChangeEventHandler}
+      variant="outlined"
+      className={classes.input}
+    />
   );
 
   return (
-    <form>
-      <legend>Filters</legend>
+    <form className={classes.form}>
+      {/* <legend className={classes.legend}>Filters</legend> */}
       {statusSelect}
       {genderSelect}
       {speciesInput}
