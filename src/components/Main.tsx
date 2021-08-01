@@ -31,6 +31,7 @@ const Main = ({ mainTitle = `Rick'n'Morty-dex` }) => {
           {mainTitle}
         </Typography>
         <Routes />
+        <div style={{height: 100}}></div>
         <Navigation />
       </Container>
     </MuiThemeProvider>

@@ -1,7 +1,6 @@
 import React from 'react';
 import { WatchListItem } from 'types';
 import ListItem from './ListItem';
-import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
 import { createStyles, makeStyles } from '@material-ui/core/styles';
 
