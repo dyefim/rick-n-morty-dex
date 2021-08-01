@@ -1,19 +1,34 @@
 import React from 'react';
+import { handlePagination, PageSetter } from 'events/';
+import Pagination from '@material-ui/lab/Pagination';
+import { makeStyles } from '@material-ui/core/styles';
 
-const Pagination = ({
-  numberOfPages = 1,
-  pageSetter,
-}: {
+const useStyles = makeStyles(theme => ({
+  pagination: {
+    display: 'flex',
+    justifyContent: 'center',
+    padding: theme.spacing(2),
+  },
+}));
+
+interface Props {
   numberOfPages?: number;
-  pageSetter: (page: number) => void;
-}) => (
-  <nav>
-    {Array.from({ length: numberOfPages }).map((_, i) => (
-      <button key={i} onClick={() => pageSetter(i)}>
-        {i + 1}
-      </button>
-    ))}
-  </nav>
-);
+  page: number;
+  pageSetter: PageSetter;
+}
 
-export default Pagination;
+const CustomPagination = ({ numberOfPages = 1, page, pageSetter }: Props) => {
+  const classes = useStyles();
+
+  return (
+    <Pagination
+      color="secondary"
+      count={numberOfPages}
+      page={page}
+      onChange={handlePagination(pageSetter)}
+      className={classes.pagination}
+    />
+  );
+};
+
+export default CustomPagination;

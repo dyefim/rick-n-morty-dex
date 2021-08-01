@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import Pagination from '@material-ui/lab/Pagination';
-import { handlePagination } from 'events/';
+import Pagination from 'components/common/Pagination';
 import Filters from './Filters';
 import EpisodesTable from './EpisodesTable';
 import useRequestByParams from 'hooks/useRequestByParams';
@@ -24,12 +23,7 @@ const EpisodesPage = ({ title = 'Episodes' }) => {
     <div>
       <h1>{title}</h1>
       <Filters setFilters={setFilters} />
-      <Pagination
-        color="secondary"
-        count={info.pages}
-        page={page}
-        onChange={handlePagination(setPage)}
-      />
+      <Pagination numberOfPages={info.pages} page={page} pageSetter={setPage} />
       <EpisodesTable episodes={episodes} />
     </div>
   );
