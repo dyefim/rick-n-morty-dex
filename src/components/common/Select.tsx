@@ -1,9 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import FormControl from '@material-ui/core/FormControl';
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
 import { SelectEvent } from 'types';
-// import { makeStyles } from '@material-ui/core/styles';
 
 interface Props {
   value?: string;
@@ -15,21 +14,6 @@ interface Props {
   max?: string;
 }
 
-// const useStyles = makeStyles(theme => ({
-//   form: {
-//     display: 'flex',
-//     // flexDirection: 'column',
-//     gap: theme.spacing(4),
-//     padding: theme.spacing(1),
-//   },
-//   legend: {
-//     color: '#777',
-//   },
-//   select: {
-//     color: 'red',
-//   },
-// }));
-
 const Select = ({
   options,
   value = undefined,
@@ -38,7 +22,12 @@ const Select = ({
   name,
   className,
 }: Props) => {
-  // const classes = useStyles();
+  const [pseudoValue, setPseudoValue] = useState('');
+
+  const handleChange = (event: SelectEvent) => {
+    handleSelection(event);
+    setPseudoValue(event.target.value);
+  };
 
   return (
     <FormControl className={className} color="secondary">
@@ -47,10 +36,9 @@ const Select = ({
         id={name}
         name={name}
         label={label}
-        value={value}
-        onChange={handleSelection}
+        value={value || pseudoValue}
+        onChange={handleChange}
         variant="outlined"
-        // color="secondary"
       >
         {options.map(option => (
           <MenuItem key={option} value={option}>
