@@ -1,4 +1,4 @@
-import { ApiResponse } from 'types';
+import { ApiResponse } from './types';
 
 export const baseUrl = 'https://rickandmortyapi.com/api';
 

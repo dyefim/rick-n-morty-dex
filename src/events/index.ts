@@ -1,10 +1,4 @@
-type FilterSetter<F> = React.Dispatch<React.SetStateAction<F>>;
-
-export type PageSetter = React.Dispatch<React.SetStateAction<number>>;
-
-export type SelectOrInputChangeEvent = React.ChangeEvent<
-  HTMLInputElement | HTMLSelectElement
->;
+import { StateSetter, PageSetter, SelectOrInputChangeEvent } from './types';
 
 const handleInput =
   (inputSetter: React.Dispatch<React.SetStateAction<string>>) =>
@@ -13,7 +7,7 @@ const handleInput =
   };
 
 const handleFilterChange =
-  <F>(filterSetter: FilterSetter<F>) =>
+  <F>(filterSetter: StateSetter<F>) =>
   (event: SelectOrInputChangeEvent) => {
     filterSetter(filters => ({
       ...filters,

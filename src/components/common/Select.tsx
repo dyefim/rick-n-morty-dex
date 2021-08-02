@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
-import { SelectEvent } from 'types';
+import { SelectEvent } from 'events/types';
 
 interface Props {
   value?: string;
