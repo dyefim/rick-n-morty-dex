@@ -3,13 +3,10 @@ import { handleFilterChange } from 'events/';
 import { LocationFilters } from 'types';
 import Input from 'components/common/Input';
 import { makeStyles } from '@material-ui/core/styles';
+import formStyles from 'styles/formStyles';
 
 const useStyles = makeStyles(theme => ({
-  form: {
-    display: 'grid',
-    gap: theme.spacing(1),
-    margin: `${theme.spacing(1)}px 0`,
-  },
+  form: formStyles(theme),
 }));
 
 interface Props {
@@ -25,7 +22,11 @@ const Filters = ({ setFilters }: Props) => {
     <form className={classes.form}>
       <Input label={'Location name'} name={'name'} handleInput={changeFilter} />
       <Input label={'Location type'} name={'type'} handleInput={changeFilter} />
-      <Input label={'Dimension'} name={'dimension'} handleInput={changeFilter} />
+      <Input
+        label={'Dimension'}
+        name={'dimension'}
+        handleInput={changeFilter}
+      />
     </form>
   );
 };

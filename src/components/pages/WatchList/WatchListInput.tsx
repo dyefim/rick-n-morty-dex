@@ -3,12 +3,10 @@ import React, { useState } from 'react';
 import { WatchListItem } from 'types';
 import Input from 'components/common/Input';
 import { makeStyles } from '@material-ui/core/styles';
+import formStyles from 'styles/formStyles';
 
 const useStyles = makeStyles(theme => ({
-  form: {
-    gap: theme.spacing(1),
-    margin: `${theme.spacing(1)}px 0`,
-  },
+  form: formStyles(theme),
 }));
 
 interface Props {

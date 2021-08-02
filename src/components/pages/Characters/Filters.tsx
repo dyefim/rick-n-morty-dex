@@ -4,13 +4,13 @@ import Select from 'components/common/Select';
 import Input from 'components/common/Input';
 import { CharacterFilters } from 'types';
 import { makeStyles } from '@material-ui/core/styles';
+import formStyles from 'styles/formStyles';
 
 const useStyles = makeStyles(theme => ({
   form: {
+    ...formStyles(theme),
     display: 'inline-grid',
     gridTemplateColumns: '1fr 1fr 1fr',
-    gap: theme.spacing(1),
-    margin: `${theme.spacing(1)}px 0`,
   },
 }));
 
