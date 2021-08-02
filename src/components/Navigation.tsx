@@ -4,7 +4,7 @@ import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
 import FaceIcon from '@material-ui/icons/Face';
 import MovieIcon from '@material-ui/icons/Movie';
 import ExploreIcon from '@material-ui/icons/Explore';
-import PlaylistPlayIcon from '@material-ui/icons/PlaylistPlay';
+import QueueIcon from '@material-ui/icons/Queue';
 import useStyles from 'styles/bottomNavStyles';
 import useNavigation from 'hooks/useNavigation';
 
@@ -37,7 +37,7 @@ const Navigation = () => {
       <BottomNavigationAction
         value="/watch-list"
         label="Watchlist"
-        icon={<PlaylistPlayIcon />}
+        icon={<QueueIcon />}
       />
     </BottomNavigation>
   );
