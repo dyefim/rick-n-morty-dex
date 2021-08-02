@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Pagination from 'components/common/Pagination';
 import Filters from './Filters';
 import LocationsTable from './LocationsTable';
@@ -19,6 +19,10 @@ const LocationsPage = () => {
     filters,
     page,
   });
+
+  useEffect(() => {
+    setPage(1);
+  }, [filters]);
 
   return (
     <div>

@@ -4,6 +4,7 @@ import Filters from './Filters';
 import CharactersList from './CharactersList';
 import { Character, CharacterFilters } from 'types';
 import Pagination from 'components/common/Pagination';
+import { useEffect } from 'react';
 
 const CharactersPage = () => {
   const [page, setPage] = useState(1);
@@ -19,6 +20,10 @@ const CharactersPage = () => {
     filters,
     page,
   });
+
+  useEffect(() => {
+    setPage(1);
+  }, [filters]);
 
   return (
     <div>

@@ -1,5 +1,6 @@
 import React from 'react';
-import { handlePagination, PageSetter } from 'events/';
+import { handlePagination } from 'events/';
+import { PageSetter } from 'events/types';
 import Pagination from '@material-ui/lab/Pagination';
 import { makeStyles } from '@material-ui/core/styles';
 

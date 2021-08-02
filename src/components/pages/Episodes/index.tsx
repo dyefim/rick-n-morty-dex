@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Pagination from 'components/common/Pagination';
 import Filters from './Filters';
 import EpisodesTable from './EpisodesTable';
@@ -18,6 +18,10 @@ const EpisodesPage = () => {
     filters,
     page,
   });
+
+  useEffect(() => {
+    setPage(1);
+  }, [filters]);
 
   return (
     <div>
