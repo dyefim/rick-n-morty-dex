@@ -7,7 +7,8 @@ import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles(theme => ({
   form: {
     display: 'grid',
-    gap: theme.spacing(2),
+    gap: theme.spacing(1),
+    margin: `${theme.spacing(1)}px 0`,
   },
 }));
 

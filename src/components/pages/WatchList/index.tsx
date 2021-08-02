@@ -4,7 +4,7 @@ import WatchListInput from './WatchListInput';
 import WatchListItems from './WatchListItems';
 import { WatchListItem } from 'types';
 
-const WatchList = ({ title = 'My watch list' }) => {
+const WatchList = () => {
   const [watchlist, setWatchlist] = useLocalState<WatchListItem>(
     'watchlist',
     {}
@@ -12,7 +12,6 @@ const WatchList = ({ title = 'My watch list' }) => {
 
   return (
     <div>
-      <h1>{title}</h1>
       <WatchListInput setWatchlist={setWatchlist} />
       <WatchListItems watchlist={watchlist} setWatchlist={setWatchlist} />
     </div>

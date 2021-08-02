@@ -2,6 +2,14 @@ import { handleInput } from 'events/';
 import React, { useState } from 'react';
 import { WatchListItem } from 'types';
 import Input from 'components/common/Input';
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles(theme => ({
+  form: {
+    gap: theme.spacing(1),
+    margin: `${theme.spacing(1)}px 0`,
+  },
+}));
 
 interface Props {
   setWatchlist: React.Dispatch<React.SetStateAction<WatchListItem>>;
@@ -26,8 +34,10 @@ const WatchListInput = ({ setWatchlist }: Props) => {
     setInputValue('');
   };
 
+  const classes = useStyles();
+
   return (
-    <form onSubmit={addEpisode} style={{ margin: '0 auto', width: 360 }}>
+    <form onSubmit={addEpisode} className={classes.form}>
       <Input
         value={inputValue}
         label={'Episode to watch'}
