@@ -9,7 +9,8 @@ const useStyles = makeStyles(theme => ({
 
 interface Props {
   children: React.ReactNode;
-  setFilters: React.Dispatch<React.SetStateAction<Record<string, string>>>;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  setFilters: React.Dispatch<React.SetStateAction<any>>;
   className?: string;
 }
 

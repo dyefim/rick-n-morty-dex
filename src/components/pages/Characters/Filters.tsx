@@ -13,7 +13,7 @@ const useStyles = makeStyles(() => ({
 }));
 
 interface Props {
-  setFilters: React.Dispatch<React.SetStateAction<Partial<CharacterFilters>>>;
+  setFilters: React.Dispatch<React.SetStateAction<CharacterFilters>>;
 }
 
 const CharacterFilters = ({ setFilters }: Props) => {

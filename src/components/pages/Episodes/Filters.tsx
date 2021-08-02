@@ -4,7 +4,7 @@ import FiltersForm from 'components/common/FiltersForm';
 import Input from 'components/common/Input';
 
 interface Props {
-  setFilters: React.Dispatch<React.SetStateAction<Partial<EpisodeFilters>>>;
+  setFilters: React.Dispatch<React.SetStateAction<EpisodeFilters>>;
 }
 
 const Filters = ({ setFilters }: Props) => {

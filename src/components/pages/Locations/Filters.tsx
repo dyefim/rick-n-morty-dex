@@ -4,7 +4,7 @@ import FiltersForm from 'components/common/FiltersForm';
 import Input from 'components/common/Input';
 
 interface Props {
-  setFilters: React.Dispatch<React.SetStateAction<Partial<LocationFilters>>>;
+  setFilters: React.Dispatch<React.SetStateAction<LocationFilters>>;
 }
 
 const Filters = ({ setFilters }: Props) => {
