@@ -2,7 +2,7 @@ type FilterSetter<F> = React.Dispatch<React.SetStateAction<F>>;
 
 export type PageSetter = React.Dispatch<React.SetStateAction<number>>;
 
-type SelectOrInputChangeEvent = React.ChangeEvent<
+export type SelectOrInputChangeEvent = React.ChangeEvent<
   HTMLInputElement | HTMLSelectElement
 >;
 

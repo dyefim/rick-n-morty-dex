@@ -1,24 +1,16 @@
 import React from 'react';
 import { handleFilterChange } from 'events/';
 import Select from 'components/common/Select';
-import TextField from '@material-ui/core/TextField';
+import Input from 'components/common/Input';
 import { CharacterFilters } from 'types';
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(theme => ({
   form: {
-    display: 'flex',
+    display: 'inline-grid',
+    gridTemplateColumns: '1fr 1fr 1fr',
     gap: theme.spacing(1),
-    margin: `${theme.spacing(1)}px 0`
-  },
-  legend: {
-    color: '#777',
-  },
-  select: {
-    width: '100%',
-  },
-  input: {
-    width: '100%',
+    margin: `${theme.spacing(1)}px 0`,
   },
 }));
 
@@ -37,7 +29,6 @@ const Filters = ({ setFilters }: Props) => {
       handleSelection={changeFilter}
       label={'Status'}
       name={'status'}
-      className={classes.select}
     />
   );
 
@@ -47,19 +38,11 @@ const Filters = ({ setFilters }: Props) => {
       handleSelection={changeFilter}
       label={'Gender'}
       name={'gender'}
-      className={classes.select}
     />
   );
 
   const speciesInput = (
-    <TextField
-      id={'Species'}
-      label={'Species'}
-      name={'species'}
-      onChange={changeFilter as React.ChangeEventHandler}
-      variant="outlined"
-      className={classes.input}
-    />
+    <Input label={'Species'} name={'species'} handleInput={changeFilter} />
   );
 
   return (
