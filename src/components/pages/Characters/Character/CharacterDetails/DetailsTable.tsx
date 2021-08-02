@@ -5,6 +5,8 @@ import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableRow from '@material-ui/core/TableRow';
 import MuiTableCell from '@material-ui/core/TableCell';
+import getRanges from 'utils/getRanges';
+import { baseUrl } from 'services';
 
 const TableCell = withStyles({
   root: {
@@ -17,6 +19,10 @@ interface Props {
 }
 
 const CharacterCard = ({ character }: Props) => {
+  const episodes = character.episode.map(
+    e => +e.replace(baseUrl + '/episode/', '')
+  );
+
   return (
     <Table size="small">
       <TableBody>
@@ -47,6 +53,10 @@ const CharacterCard = ({ character }: Props) => {
         <TableRow>
           <TableCell>Origin:</TableCell>
           <TableCell>{character.origin.name}</TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell>Episodes:</TableCell>
+          <TableCell>{getRanges(episodes).join(', ')}</TableCell>
         </TableRow>
       </TableBody>
     </Table>
