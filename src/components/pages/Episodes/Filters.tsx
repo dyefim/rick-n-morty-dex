@@ -1,7 +1,7 @@
 import React from 'react';
 import { handleFilterChange } from 'events/';
 import { EpisodeFilters } from 'types';
-import TextField from '@material-ui/core/TextField';
+import Input from 'components/common/Input';
 
 interface Props {
   setFilters: React.Dispatch<React.SetStateAction<EpisodeFilters>>;
@@ -10,25 +10,9 @@ interface Props {
 const Filters = ({ setFilters }: Props) => {
   const changeFilter = handleFilterChange(setFilters);
 
-  const episodeNameInput = (
-    <TextField
-      label={'Episode name'}
-      id={'name'}
-      name={'name'}
-      onChange={changeFilter as React.ChangeEventHandler}
-      variant="outlined"
-      // className={classes.input}
-    />
-    // <label htmlFor="name">
-    //   Episode name
-    //   <input type="text" name="name" id="name" onChange={changeFilter} />
-    // </label>
-  );
-
   return (
     <form>
-      {/* <legend>Filters</legend> */}
-      {episodeNameInput}
+      <Input label={'Episode name'} name={'name'} handleInput={changeFilter} />
     </form>
   );
 };

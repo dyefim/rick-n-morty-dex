@@ -29,14 +29,14 @@ const WatchListItem = ({
           id={id}
           checked={isComplete}
           onChange={handleCheckbox}
-          inputProps={{ 'aria-label': 'primary checkbox' }}
+          inputProps={{ 'aria-label': 'is complete checkbox' }}
         />
         <IconButton
           onClick={() => handleRemove(id)}
           edge="end"
           aria-label="delete"
         >
-          <DeleteIcon style={{ fill: '#c57' }} />
+          <DeleteIcon htmlColor="#d79" />
         </IconButton>
       </ListItemSecondaryAction>
     </ListItem>

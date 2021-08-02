@@ -7,7 +7,7 @@ const useStyles = makeStyles(theme => ({
   pagination: {
     display: 'flex',
     justifyContent: 'center',
-    padding: theme.spacing(2),
+    padding: `${theme.spacing(2)}px 0`,
   },
 }));
 
@@ -26,6 +26,8 @@ const CustomPagination = ({ numberOfPages = 1, page, pageSetter }: Props) => {
       count={numberOfPages}
       page={page}
       onChange={handlePagination(pageSetter)}
+      siblingCount={1}
+      boundaryCount={1}
       className={classes.pagination}
     />
   );

@@ -1,7 +1,13 @@
 import React from 'react';
 import { handleFilterChange } from 'events/';
 import { LocationFilters } from 'types';
-import TextField from '@material-ui/core/TextField';
+import Input from 'components/common/Input';
+import { makeStyles } from '@material-ui/core/styles';
+import formStyles from 'styles/formStyles';
+
+const useStyles = makeStyles(theme => ({
+  form: formStyles(theme),
+}));
 
 interface Props {
   setFilters: React.Dispatch<React.SetStateAction<LocationFilters>>;
@@ -10,45 +16,17 @@ interface Props {
 const Filters = ({ setFilters }: Props) => {
   const changeFilter = handleFilterChange(setFilters);
 
-  const locationNameInput = (
-    <TextField
-      label={'Location name'}
-      id={'name'}
-      name={'name'}
-      onChange={changeFilter as React.ChangeEventHandler}
-      variant="outlined"
-      autoComplete={'off'}
-    />
-  );
-
-  const locationTypeInput = (
-    <TextField
-      label={'Type'}
-      id={'type'}
-      name={'type'}
-      onChange={changeFilter as React.ChangeEventHandler}
-      variant="outlined"
-      autoComplete={'off'}
-    />
-  );
-
-  const locationDimensionInput = (
-    <TextField
-      label={'Dimension'}
-      id={'dimension'}
-      name={'dimension'}
-      onChange={changeFilter as React.ChangeEventHandler}
-      variant="outlined"
-      autoComplete={'off'}
-    />
-  );
+  const classes = useStyles();
 
   return (
-    <form>
-      <legend>Filters</legend>
-      {locationNameInput}
-      {locationTypeInput}
-      {locationDimensionInput}
+    <form className={classes.form}>
+      <Input label={'Location name'} name={'name'} handleInput={changeFilter} />
+      <Input label={'Location type'} name={'type'} handleInput={changeFilter} />
+      <Input
+        label={'Dimension'}
+        name={'dimension'}
+        handleInput={changeFilter}
+      />
     </form>
   );
 };

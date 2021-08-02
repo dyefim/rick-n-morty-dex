@@ -4,12 +4,9 @@ import ListItem from './ListItem';
 import Box from '@material-ui/core/Box';
 import { createStyles, makeStyles } from '@material-ui/core/styles';
 
-const useStyles = makeStyles((theme) =>
+const useStyles = makeStyles(theme =>
   createStyles({
-    root: {
-      width: '100%',
-      maxWidth: 360,
-      margin: '0 auto',
+    list: {
       backgroundColor: theme.palette.background.paper,
     },
   })
@@ -46,7 +43,7 @@ const WatchListItems = ({ watchlist, setWatchlist }: Props) => {
   };
 
   return (
-    <Box borderRadius={4} className={classes.root}>
+    <Box borderRadius={4} className={classes.list}>
       <ul>
         {Object.entries(watchlist).map(([id, { episode, isComplete }]) => {
           return (
