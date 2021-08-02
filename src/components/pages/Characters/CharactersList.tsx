@@ -10,7 +10,7 @@ interface Props {
 const CharactersList = ({ characters }: Props) => {
   const charactersCards = characters?.map((character: Character) => {
     return (
-      <Grid key={character.id} item xs={12} md={8} sm={6}>
+      <Grid key={character.id} item xs={6} md={4}>
         <CharacterCard key={character.id} character={character} />
       </Grid>
     );
