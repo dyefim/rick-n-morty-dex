@@ -1,4 +1,5 @@
 import React from 'react';
+import EpisodeRow from './EpisodeRow';
 import { Episode } from 'types';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -39,13 +40,7 @@ const EpisodesTable = ({ episodes }: Props) => {
         </TableHead>
         <TableBody>
           {episodes?.map(episode => (
-            <TableRow key={episode.episode}>
-              <TableCell className="weak">{episode.episode}</TableCell>
-              <TableCell>{episode.name}</TableCell>
-              <TableCell className="weak" align="right">
-                {episode.air_date}
-              </TableCell>
-            </TableRow>
+            <EpisodeRow key={episode.episode} episode={episode} />
           ))}
         </TableBody>
       </Table>

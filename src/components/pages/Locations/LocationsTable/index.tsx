@@ -1,4 +1,5 @@
 import React from 'react';
+import LocationRow from './LocationRow';
 import { Location } from 'types';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -39,11 +40,7 @@ const LocationsTable = ({ locations }: Props) => {
         </TableHead>
         <TableBody>
           {locations?.map(location => (
-            <TableRow key={location.id}>
-              <TableCell>{location.name}</TableCell>
-              <TableCell>{location.type}</TableCell>
-              <TableCell>{location.dimension}</TableCell>
-            </TableRow>
+            <LocationRow key={location.id} location={location} />
           ))}
         </TableBody>
       </Table>
