@@ -7,15 +7,29 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+import { makeStyles } from '@material-ui/core/styles';
+import tableStyles from 'styles/tableStyles';
+
+const useStyles = makeStyles({
+  table: {
+    ...tableStyles(),
+  },
+});
 
 interface Props {
   episodes: Episode[];
 }
 
 const EpisodesTable = ({ episodes }: Props) => {
+  const classes = useStyles();
+
   return (
     <TableContainer component={Paper}>
-      <Table size="small" aria-label="simple table">
+      <Table
+        size="small"
+        classes={{ root: classes.table }}
+        aria-label="Episodes table"
+      >
         <TableHead>
           <TableRow>
             <TableCell>Episode</TableCell>
@@ -26,9 +40,11 @@ const EpisodesTable = ({ episodes }: Props) => {
         <TableBody>
           {episodes?.map(episode => (
             <TableRow key={episode.episode}>
-              <TableCell>{episode.episode}</TableCell>
+              <TableCell className="weak">{episode.episode}</TableCell>
               <TableCell>{episode.name}</TableCell>
-              <TableCell align="right">{episode.air_date}</TableCell>
+              <TableCell className="weak" align="right">
+                {episode.air_date}
+              </TableCell>
             </TableRow>
           ))}
         </TableBody>
