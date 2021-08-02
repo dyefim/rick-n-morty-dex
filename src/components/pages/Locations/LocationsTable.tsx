@@ -7,15 +7,29 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+import { makeStyles } from '@material-ui/core';
+import tableStyles from 'styles/tableStyles';
+
+const useStyles = makeStyles({
+  table: {
+    ...tableStyles(),
+  },
+});
 
 interface Props {
   locations: Location[];
 }
 
 const LocationsTable = ({ locations }: Props) => {
+  const classes = useStyles();
+
   return (
     <TableContainer component={Paper}>
-      <Table size="small" aria-label="simple table">
+      <Table
+        size="small"
+        classes={{ root: classes.table }}
+        aria-label="Locations table"
+      >
         <TableHead>
           <TableRow>
             <TableCell>Name</TableCell>
