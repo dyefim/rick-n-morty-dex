@@ -1,57 +1,39 @@
 import React from 'react';
-import { handleFilterChange } from 'events/';
 import Select from 'components/common/Select';
 import Input from 'components/common/Input';
+import FiltersForm from 'components/common/FiltersForm';
 import { CharacterFilters } from 'types';
 import { makeStyles } from '@material-ui/core/styles';
-import formStyles from 'styles/formStyles';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles(() => ({
   form: {
-    ...formStyles(theme),
     display: 'inline-grid',
     gridTemplateColumns: '1fr 1fr 1fr',
   },
 }));
 
 interface Props {
-  setFilters: React.Dispatch<React.SetStateAction<CharacterFilters>>;
+  setFilters: React.Dispatch<React.SetStateAction<Partial<CharacterFilters>>>;
 }
 
-const Filters = ({ setFilters }: Props) => {
+const CharacterFilters = ({ setFilters }: Props) => {
   const classes = useStyles();
 
-  const changeFilter = handleFilterChange(setFilters);
-
-  const statusSelect = (
-    <Select
-      options={['', 'Alive', 'Dead', 'unknown']}
-      handleSelection={changeFilter}
-      label={'Status'}
-      name={'status'}
-    />
-  );
-
-  const genderSelect = (
-    <Select
-      options={['', 'Female', 'Male', 'Genderless', 'unknown']}
-      handleSelection={changeFilter}
-      label={'Gender'}
-      name={'gender'}
-    />
-  );
-
-  const speciesInput = (
-    <Input label={'Species'} name={'species'} handleInput={changeFilter} />
-  );
-
   return (
-    <form className={classes.form}>
-      {statusSelect}
-      {genderSelect}
-      {speciesInput}
-    </form>
+    <FiltersForm setFilters={setFilters} className={classes.form}>
+      <Select
+        options={['', 'Alive', 'Dead', 'unknown']}
+        label={'Status'}
+        name={'status'}
+      />
+      <Select
+        options={['', 'Female', 'Male', 'Genderless', 'unknown']}
+        label={'Gender'}
+        name={'gender'}
+      />
+      <Input label={'Species'} name={'species'} />
+    </FiltersForm>
   );
 };
 
-export default Filters;
+export default CharacterFilters;

@@ -6,7 +6,7 @@ import { SelectEvent } from 'types';
 interface Props {
   value?: string;
   options: string[];
-  handleSelection: React.EventHandler<SelectEvent>;
+  handleSelection?: React.EventHandler<SelectEvent>;
   label?: string;
   name: string;
   id?: string;
@@ -23,7 +23,9 @@ const Select = ({
   const [pseudoValue, setPseudoValue] = useState('');
 
   const handleChange = (event: SelectEvent) => {
-    handleSelection(event);
+    if (handleSelection) {
+      handleSelection(event);
+    }
     setPseudoValue(event.target.value);
   };
 

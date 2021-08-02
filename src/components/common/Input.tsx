@@ -3,7 +3,7 @@ import TextField from '@material-ui/core/TextField';
 
 interface Props {
   value?: string;
-  handleInput: React.ChangeEventHandler<HTMLInputElement>;
+  handleInput?: React.ChangeEventHandler<HTMLInputElement>;
   name: string;
   label?: string;
   id?: string;
@@ -19,7 +19,9 @@ const CustomInput = ({
   const [pseudoValue, setPseudoValue] = useState('');
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    handleInput(event);
+    if (handleInput) {
+      handleInput(event);
+    }
     setPseudoValue(event.target.value);
   };
 
